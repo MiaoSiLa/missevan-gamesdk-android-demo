@@ -21,13 +21,13 @@ import com.missevan.game.demo.data.DataSource;
 import com.missevan.game.demo.model.Post;
 import com.missevan.game.demo.ui.EditAlertDialog;
 import com.missevan.game.demo.ui.PostAdapter;
+import com.missevan.game.demo.utils.MD5;
 import com.missevan.game.sdk.MissEvanSdk;
 import com.missevan.game.sdk.callbacklistener.CallbackListener;
 import com.missevan.game.sdk.callbacklistener.ExitCallbackListener;
 import com.missevan.game.sdk.callbacklistener.InitCallbackListener;
 import com.missevan.game.sdk.callbacklistener.MissEvanSdkError;
 import com.missevan.game.sdk.callbacklistener.OrderCallbackListener;
-import com.missevan.game.sdk.utils.MD5;
 import com.missevan.game.sdk.utils.MissEvanConstants;
 
 import java.util.List;

@@ -24,7 +24,7 @@
     </style>
 
     <style name="big_title.black">
-        <item name="android:textColor">@color/missevansdk_TextColorBlack</item>
+        <item name="android:textColor">#FF000000</item>
     </style>
 
 

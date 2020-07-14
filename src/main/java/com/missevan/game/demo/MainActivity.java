@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.missevan.game.demo.utils.MD5;
 import com.missevan.game.sdk.MissEvanSdk;
 import com.missevan.game.sdk.callbacklistener.CallbackListener;
 import com.missevan.game.sdk.callbacklistener.ExitCallbackListener;
@@ -26,7 +27,6 @@ import com.missevan.game.sdk.callbacklistener.InitCallbackListener;
 import com.missevan.game.sdk.callbacklistener.MissEvanSdkError;
 import com.missevan.game.sdk.callbacklistener.OrderCallbackListener;
 import com.missevan.game.sdk.utils.LogUtils;
-import com.missevan.game.sdk.utils.MD5;
 import com.missevan.game.sdk.utils.MissEvanConstants;
 
 import java.lang.reflect.Field;
