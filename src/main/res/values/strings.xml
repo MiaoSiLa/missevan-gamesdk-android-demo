@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">猫耳游戏 Demo</string>
+    <string name="error_no_posts">Error: Could not load posts.</string>
+</resources>

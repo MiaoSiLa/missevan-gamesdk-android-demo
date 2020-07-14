@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="user"/>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+    <!--<domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">game.missevan.com</domain>
+        <domain includeSubdomains="true">game.uat.missevan.com</domain>
+        <domain includeSubdomains="true">wx.tenpay.com</domain>
+        <domain includeSubdomains="true">sentry.missevan.com</domain>
+        <domain includeSubdomains="true">static.missevan.com</domain>
+        <domain includeSubdomains="true">cf.aliyun.com</domain>
+        <domain includeSubdomains="true">ynuf.aliapp.org</domain>
+        <trust-anchors>
+            <certificates src="user"/>
+        </trust-anchors>
+    </domain-config>-->
+</network-security-config>
