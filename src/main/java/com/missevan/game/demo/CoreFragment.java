@@ -194,8 +194,8 @@ public class CoreFragment extends Fragment implements CommonContract.View {
                                     goPay(money);
                                     mEditAlertDialog.dismiss();
                                 }
-                            }).
-                            setCancelListener(new View.OnClickListener() {
+                            })
+                            .setCancelListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     mEditAlertDialog.dismiss();

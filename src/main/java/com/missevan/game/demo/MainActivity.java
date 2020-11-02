@@ -81,23 +81,23 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
         MissEvanSdk gameSdk = MissEvanSdk.initialize(true, MainActivity.this,
                 "1", "1", "1", "JqCB4Jun1pWYaoiTbhC2a$0icKv2JSsu", new InitCallbackListener() {
-            @Override
-            public void onSuccess() {
-                Log.d("yjnull", "MissEvan SDK 初始化成功");
-                makeToast("MissEvan SDK 初始化成功");
-            }
+                    @Override
+                    public void onSuccess() {
+                        Log.d("yjnull", "MissEvan SDK 初始化成功");
+                        makeToast("MissEvan SDK 初始化成功");
+                    }
 
-            @Override
-            public void onFailed() {
+                    @Override
+                    public void onFailed() {
 
-            }
-        }, new ExitCallbackListener() {
-            @Override
-            public void onExit() {
-                makeToast("退出游戏");
-                finish();
-            }
-        });
+                    }
+                }, new ExitCallbackListener() {
+                    @Override
+                    public void onExit() {
+                        makeToast("退出游戏");
+                        finish();
+                    }
+                });
 
         setContentView(R.layout.activity_main);
 
