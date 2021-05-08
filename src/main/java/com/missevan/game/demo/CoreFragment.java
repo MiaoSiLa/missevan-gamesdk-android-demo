@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.missevan.game.demo.data.DataSource;
+import com.missevan.game.demo.data.local.LocalDataSource;
 import com.missevan.game.demo.model.Post;
 import com.missevan.game.demo.ui.EditAlertDialog;
 import com.missevan.game.demo.ui.PostAdapter;
@@ -57,6 +58,7 @@ public class CoreFragment extends Fragment implements CommonContract.View {
     private View mEmptyView;
     private Snackbar mErrorSnackbar;
     private EditAlertDialog mEditAlertDialog;
+    private String baseUrl;
 
     private InitCallbackListener mInitCallbackListener = new InitCallbackListener() {
         @Override
@@ -88,8 +90,8 @@ public class CoreFragment extends Fragment implements CommonContract.View {
                 "JqCB4Jun1pWYaoiTbhC2a$0icKv2JSsu", mInitCallbackListener, mExitCallbackListener);
         Bundle args = getArguments();
         if (args != null) {
-            String base_url = args.getString("base_url");
-            mSdk.changeBaseUrl(base_url, mInitCallbackListener);
+            baseUrl = args.getString("base_url");
+            mSdk.changeBaseUrl(baseUrl, mInitCallbackListener);
         }
         mSharedPreferences = getActivity().getSharedPreferences("demouser", Context.MODE_PRIVATE);
     }
@@ -284,10 +286,17 @@ public class CoreFragment extends Fragment implements CommonContract.View {
         int fee = Integer.parseInt(money);
         int gameMoney = (int) ((fee / 100.0) * 100);
         String notifyUrl = "";
-        String data = String.valueOf(gameMoney) + String.valueOf(fee) + notifyUrl + out_trade_number;
-        String order_sign = MD5.sign(data, "YY7J28iu2UOpiJH8IOh89HoHSvORQv5w78HJJYsdfs9s8SH89ju8J");
+        String data = gameMoney + String.valueOf(fee) + notifyUrl + out_trade_number;
+        String orderSign;
+        if (LocalDataSource.DEFAULT_BASE_URL.equals(baseUrl)) { // 线上环境
+            orderSign = MD5.sign(data, "ba28iu2ous7gJH8IOh89HoHSvORQv5g78HJJYsdfs9s8SH87yamf");
+        } else {
+            orderSign = MD5.sign(data, "YY7J28iu2UOpiJH8IOh89HoHSvORQv5w78HJJYsdfs9s8SH89ju8J");
+        }
+
+
         mSdk.pay(uid, gameMoney, "金币", "最强商城", out_trade_number, fee, 222,
-                "怪兽", "hahahaha", notifyUrl, order_sign, new OrderCallbackListener() {
+                "怪兽", "hahahaha", notifyUrl, orderSign, new OrderCallbackListener() {
                     @Override
                     public void onSuccess(String out_trade_no, String bs_trade_no) {
                         makeToast("支付成功 : " + bs_trade_no);
