@@ -1,4 +1,4 @@
-# MissEvan 游戏 SDK 集成指南 V2.0.0
+# MissEvan 游戏 SDK 集成指南 V2.0.2
 
 MissEvan 游戏 SDK 开发包（简称：SDK）主要用来向第三方应用程序提供便捷、安全以及可靠的登录、支付服务。本文主要描述 SDK 用户登录、支付接口的使用方法，供合作伙伴的开发者接入使用。
 
@@ -28,6 +28,7 @@ MissEvan 游戏 SDK 开发包（简称：SDK）主要用来向第三方应用程
 ### 2.2 SDK 导入
 
 (1) 主 module 下新建 libs 文件夹，将 aar 文件放置到 libs 文件夹下
+
 (2) 在主 module 的 build.gradle 配置文件中添加入下代码
 
 ```java
@@ -43,6 +44,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
 
     // 2. SDK 依赖了如下库
+    implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.4.0'
     implementation 'io.sentry:sentry-android:1.7.27'
@@ -150,7 +152,7 @@ MissEvanSdk.getInstance().login(new CallbackListener() {
 login(CallbackListener listener);
 ```
 
-调用该方法，会打开猫耳游戏用户登录界面，引导用户输入用户名、密码完成登录过程
+调用该方法，会打开猫耳游戏用户登录界面，引导用户输入用户名、密码完成登录过程，登录成功后弹出欢迎弹窗，可以切换用户，**需确保每次进入游戏前都调用**。
 
 **注意：停服相关公告接口会在登录之前调用，停服维护期间不要调用 SDK 登录接口（若游戏有多个区服，停服维护的区服不可调用SDK接口，其他正常区服可调用）**
 
@@ -285,8 +287,6 @@ getUserInfo(CallbackListener listener)
 ```
 
 调用该方法，如果用户已经登录且没有超时，则返回用户相关信息
-
-**注意: 需要保证每次进入游戏前都调用该方法获取最新的用户信息**
 
 **参数：**
 
