@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/missevan_root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/missevan_btn_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/missevan_btn_isLogin"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/missevan_btn_isLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="是否登录"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/missevan_btn_main"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/missevan_btn_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注销登录"
+        app:layout_constraintLeft_toLeftOf="@id/missevan_btn_main"
+        app:layout_constraintTop_toBottomOf="@id/missevan_btn_main"/>
+
+    <Button
+        android:id="@+id/missevan_btn_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建角色"
+        app:layout_constraintLeft_toLeftOf="@id/missevan_btn_main"
+        app:layout_constraintTop_toBottomOf="@id/missevan_btn_logout"/>
+    <Button
+        android:id="@+id/missevan_btn_notifyzone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="通知区服"
+        app:layout_constraintLeft_toLeftOf="@id/missevan_btn_main"
+        app:layout_constraintTop_toBottomOf="@id/missevan_btn_role"/>
+    <Button
+        android:id="@+id/missevan_btn_certificate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="是否实名认证"
+        app:layout_constraintLeft_toLeftOf="@id/missevan_btn_isLogin"
+        app:layout_constraintTop_toBottomOf="@id/missevan_btn_isLogin"/>
+    <Button
+        android:id="@+id/missevan_btn_userinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取用户信息"
+        app:layout_constraintLeft_toLeftOf="@id/missevan_btn_isLogin"
+        app:layout_constraintTop_toBottomOf="@id/missevan_btn_certificate"/>
+    <Button
+        android:id="@+id/missevan_btn_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="退出游戏"
+        app:layout_constraintLeft_toLeftOf="@id/missevan_btn_isLogin"
+        app:layout_constraintTop_toBottomOf="@id/missevan_btn_userinfo"/>
+    <Button
+        android:id="@+id/missevan_btn_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付 1 分"
+        app:layout_constraintLeft_toLeftOf="@id/missevan_btn_isLogin"
+        app:layout_constraintBottom_toTopOf="@id/missevan_btn_isLogin" />
+
+    <EditText
+        android:id="@+id/missevan_et_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入金额，单位 (分)"
+        android:inputType="numberSigned"
+        android:maxLength="7"
+        app:layout_constraintBottom_toTopOf="@id/missevan_btn_pay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
