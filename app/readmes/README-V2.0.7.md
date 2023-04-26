@@ -96,15 +96,15 @@ dependencies{
 
 ```java
 MissEvanSdk gameSdk = MissEvanSdk.initialize(
-    boolean debug, 
-    Context c, 
-    String merchant_id, 
-    String app_id, 
-    String server_id, 
-    String app_key, 
-    InitCallbackListener initCallbackListener, 
+    boolean debug,
+    Context c,
+    String merchant_id,
+    String app_id,
+    String server_id,
+    String app_key,
+    InitCallbackListener initCallbackListener,
     ExitCallbackListener exitListener
-);
+    );
 ```
 
 参数说明如下
@@ -306,7 +306,7 @@ public void onAccountInvalid(){
     // TODO 其他登出操作
     makeToast("账号已登出");
     }
-});
+    });
 ```
 
 此接口会在用户登录失效时调用，请在收到监听时进行相关登出操作，回到游戏登录界面
