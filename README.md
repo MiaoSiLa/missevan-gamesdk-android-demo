@@ -1,6 +1,6 @@
 # 猫耳FM游戏 SDK 集成指南 V2.0.7
 
-MissEvan 游戏 SDK 开发包（简称：SDK）主要用来向第三方应用程序提供便捷、安全以及可靠的登录、支付服务。本文主要描述 SDK
+猫耳FM游戏 SDK 开发包（简称：SDK）主要用来向第三方应用程序提供便捷、安全以及可靠的登录、支付服务。本文主要描述 SDK
 用户登录、支付接口的使用方法，供合作伙伴的开发者接入使用。
 
 ## 1. SDK 接入前准备
@@ -31,21 +31,21 @@ MissEvan 游戏 SDK 开发包（简称：SDK）主要用来向第三方应用程
 (1) 如果之前接入过猫耳FM游戏 SDK，需要先移除主 module 下 libs 文件夹中的 `alipaysdk-noutdid-15.8.10.220419171600.aar` 以及
 `missevansdk_Game_SDK_release_vxxx.aar` 文件。
 
-(2) 如果主 module 下没有 libs 文件夹，需要新建一个，将本 demo 工程中 `app/libs` 下的 `Missevansdk-Game-SDK-Release-v2.0.7.aar` 文件放置到 libs 文件夹下
+(2) 将本 demo 工程中 `app/libs` 下的 `Missevansdk-Game-SDK-Release-v2.0.7.aar` 文件放置到主 module 的 `libs` 文件夹下。如果主 module 下没有 `libs` 文件夹，则需要新建一个。
 
-(3) 在主 module 的 build.gradle 配置文件中添加入下代码
+(3) 在主 module 的 build.gradle 配置文件中添加入下代码：
 
 ```groovy
-repositories{
-    flatDir{
-        dirs'libs'
+repositories {
+    flatDir {
+        dirs 'libs'
     }
 }
 
-dependencies{
+dependencies {
     // 1. 导入 aar
-    implementation fileTree(dir:'libs',include:['*.aar'])
-    
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+
     implementation 'androidx.core:core:1.6.0'
     implementation 'com.alipay.sdk:alipaysdk-android:15.8.09@aar'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
@@ -54,7 +54,6 @@ dependencies{
     implementation 'org.slf4j:slf4j-nop:1.7.25'
 }
 ```
-
 
 ### 2.3 修改 AndroidManifest.xml
 
@@ -76,9 +75,7 @@ dependencies{
 
 **添加 Activity 前请注意以下内容**
 
-1. 由于加入微信支付功能，接入时，需要在自己的包名下新建 wxapi 文件夹，然后在此文件夹下新建 WXPayEntryActivity，并且 WXPayEntryActivity 继承 SDK
-   中的
-   BaseWXEntryActivity，WXPayEntryActivity 不需要实现任何方法。最后在 AndroidManifest.xml 中声明此 Activity。（此部分可参照 Demo 项目）
+1. 由于加入微信支付功能，接入时，需要在自己的包名下新建 wxapi 文件夹，然后在此文件夹下新建 WXPayEntryActivity，并且 WXPayEntryActivity 继承 SDK 中的 BaseWXEntryActivity，WXPayEntryActivity 不需要实现任何方法。最后在 AndroidManifest.xml 中声明此 Activity。（此部分可参照 Demo 项目）
 
 **请将以下内容全部复制到 AndroidManifest.xml 的 application 标签下**
 
@@ -86,7 +83,11 @@ dependencies{
 <activity android:name=".wxapi.WXPayEntryActivity" android:exported="true" android:launchMode="singleTop" />
 ```
 
-如果与 Demo 项目中存在差异，请以 Demo 项目中为准
+如果与 Demo 项目中存在差异，请以 Demo 项目中为准。
+
+#### 2.4 角标与闪屏接入
+
+合作游戏打包前，需接入猫耳FM渠道闪屏，并在游戏 icon 右下角添加猫耳FM渠道角标（素材路径为 `assets/猫耳角标闪屏.zip`），接入时，请规范使用素材，不得进行影响渠道 logo 展示的加工修改，如裁切 logo 主体、单向拉伸等。
 
 ## 3. SDK 初始化
 
@@ -300,11 +301,11 @@ errorMessage 字段
 ### 4.5 账号失效监听接口
 
 ```java
-gameSdk.setAccountListener(new AccountCallBackListener(){
-@Override
-public void onAccountInvalid(){
-    // TODO 其他登出操作
-    makeToast("账号已登出");
+gameSdk.setAccountListener(new AccountCallBackListener() {
+    @Override
+    public void onAccountInvalid(){
+        // TODO 其他登出操作
+        makeToast("账号已登出");
     }
 });
 ```
